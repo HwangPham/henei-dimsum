@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "category": "Chiên",
+    "name": "Hoành thánh tứ xuyên",
+    "price": 59000,
+    "description": "Sichuan Spicy Wontons",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "category": "Chiên",
+    "name": "Cuốn Tôm Da Giòn Hong Kong",
+    "price": 69000,
+    "description": "Hong Kong Crispy Shrimp Roll",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "category": "Hấp",
+    "name": "Há Cảo Tôm",
+    "price": 55000,
+    "description": "Shrimp Dumplings",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "category": "Mỳ",
+    "name": "Mì Hoành Thánh (khô, nước)",
+    "price": 69000,
+    "description": "Wonton Noodles",
+    "image": ""    
+  },
+  {
+    "id": 5,
+    "category": "Nước",
+    "name": "Pepsi",
+    "price": 25000,
+    "description": "Pepsi không calo",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "category": "Xào",
+    "name": "Tôm Sốt Mayone",
+    "price": 129000,
+    "description": "Shrimp with Mayonnaise",
+    "image": ""
+  }
+]

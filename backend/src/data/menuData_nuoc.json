@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Nước táo lên men Tiandi",
+    "price": 29000,
+    "description": "Fermented apple juice",
+    "category": "Nước",
+    "image": "/images/nuoc/tiandi.jpg",
+    "id": 49
+  },
+  {
+    "name": "Trà thảo mộc Wanglaoji",
+    "price": 29000,
+    "description": "Wanglaoji herbal tea",
+    "category": "Nước",
+    "image": "/images/nuoc/wanglaoji.jpg",
+    "id": 50
+  },
+  {
+    "name": "Pepsi / không calo",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/pepsi.jpg",
+    "id": 51
+  },
+  {
+    "name": "7Up",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/7up.jpg",
+    "id": 52
+  },
+  {
+    "name": "Twister",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/twister.jpg",
+    "id": 53
+  },
+  {
+    "name": "Mirinda",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/mirinda.jpg",
+    "id": 54
+  },
+  {
+    "name": "Bia Hà Nội",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/bia-hn.jpg",
+    "id": 55
+  },
+  {
+    "name": "Bia 333",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/bia-333.jpg",
+    "id": 56
+  },
+  {
+    "name": "Trà tắc",
+    "price": 20000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/tra-tac.jpg",
+    "id": 57
+  },
+  {
+    "name": "Nước suối",
+    "price": 15000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/nuoc-suoi.jpg",
+    "id": 58
+  },
+  {
+    "name": "Nước đậu nành",
+    "price": 15000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/dau-nanh.jpg",
+    "id": 59
+  },
+  {
+    "name": "Trà sâm dứa",
+    "price": 12000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/sam-dua.jpg",
+    "id": 60
+  }
+]

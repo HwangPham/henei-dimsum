@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Hoành thánh tứ xuyên",
+    "price": 59000,
+    "description": "Sichuan Spicy Wontons",
+    "category": "Chiên",
+    "image": "/images/chien/hoanh-thanh-tu-xuyen.jpg",
+    "id": 1
+  },
+  {
+    "name": "Cuốn Tôm Da Giòn Hong Kong",
+    "price": 69000,
+    "description": "Hong Kong Crispy Shrimp Roll",
+    "category": "Chiên",
+    "image": "/images/chien/cuon-tom-da-gion.jpg",
+    "id": 2
+  },
+  {
+    "name": "Nem chiên hải sản",
+    "price": 89000,
+    "description": "Seafood Spring Rolls",
+    "category": "Chiên",
+    "image": "/images/chien/nem-hai-san.jpg",
+    "id": 3
+  },
+  {
+    "name": "Tôm viên chiên Lệ Chi",
+    "price": 59000,
+    "description": "Lychee-style Fried Shrimp Balls",
+    "category": "Chiên",
+    "image": "/images/chien/tom-vien-le-chi.jpg",
+    "id": 4
+  },
+  {
+    "name": "Hoành thánh tôm chiên",
+    "price": 59000,
+    "description": "Crispy Shrimp Wontons",
+    "category": "Chiên",
+    "image": "/images/chien/hoanh-thanh-tom.jpg",
+    "id": 5
+  },
+  {
+    "name": "Tàu hũ ky tôm thịt chiên",
+    "price": 69000,
+    "description": "Crispy Bean Curd Shrimp Roll",
+    "category": "Chiên",
+    "image": "/images/chien/tau-hu-ky.jpg",
+    "id": 6
+  },
+  {
+    "name": "Vịt quay HongKong (1/2 con)",
+    "price": 279000,
+    "description": "Roast Duck",
+    "category": "Chiên",
+    "image": "/images/chien/vit-quay.jpg",
+    "id": 7
+  },
+  {
+    "name": "Tôm chiên sốt hoàng kim (trứng muối)",
+    "price": 135000,
+    "description": "Golden Salted Egg Yolk Fried Shrimp",
+    "category": "Chiên",
+    "image": "/images/chien/tom-sot-hoang-kim.jpg",
+    "id": 8
+  },
+  {
+    "name": "Bánh bao thịt chiên",
+    "price": 55000,
+    "description": "Pan-fried Pork Buns",
+    "category": "Chiên",
+    "image": "/images/chien/banh-bao-thit.jpg",
+    "id": 9
+  },
+  {
+    "name": "Thịt xá xíu",
+    "price": 95000,
+    "description": "Char Siu Pork",
+    "category": "Chiên",
+    "image": "/images/chien/xa-xiu.jpg",
+    "id": 10
+  }
+]

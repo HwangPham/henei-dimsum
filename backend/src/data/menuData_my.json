@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Mì Hoành Thánh (khô, nước)",
+    "price": 69000,
+    "description": "Wonton Noodles",
+    "category": "Mỳ",
+    "image": "/images/my/mi-hoanh-thanh.jpg",
+    "id": 40
+  },
+  {
+    "name": "Mỳ EFU Xá Xíu",
+    "price": 119000,
+    "description": "Wok-fried Efu Noodles with Barbecued Pork",
+    "category": "Mỳ",
+    "image": "/images/my/efu-xa-xiu.jpg",
+    "id": 41
+  },
+  {
+    "name": "Mì Xá Xíu (khô, nước)",
+    "price": 69000,
+    "description": "Char Siu Noodles",
+    "category": "Mỳ",
+    "image": "/images/my/mi-xa-xiu.jpg",
+    "id": 42
+  },
+  {
+    "name": "Mì Hoành Thánh Xá Xíu (khô - nước)",
+    "price": 75000,
+    "description": "Wonton Char Siu Noodles",
+    "category": "Mỳ",
+    "image": "/images/my/mi-hoanh-thanh-xa-xiu.jpg",
+    "id": 43
+  },
+  {
+    "name": "Canh Hoành Thánh",
+    "price": 75000,
+    "description": "Wonton Soup",
+    "category": "Mỳ",
+    "image": "/images/my/canh-hoanh-thanh.jpg",
+    "id": 44
+  },
+  {
+    "name": "Hủ Tiếu Xào Hải Sản",
+    "price": 129000,
+    "description": "Wok-fried Seafood Noodle",
+    "category": "Mỳ",
+    "image": "/images/my/hu-tieu-hai-san.jpg",
+    "id": 45
+  },
+  {
+    "name": "Hủ Tiếu Xào Bò",
+    "price": 89000,
+    "description": "Wok-fried Flat Noodles with Beef",
+    "category": "Mỳ",
+    "image": "/images/my/hu-tieu-bo.jpg",
+    "id": 46
+  },
+  {
+    "name": "Mỳ Efu Vịt Sốt Tiêu Đen",
+    "price": 119000,
+    "description": "Wok-fried Efu Noodles with Duck in Black Pepper Sauce",
+    "category": "Mỳ",
+    "image": "/images/my/efu-vit.jpg",
+    "id": 47
+  },
+  {
+    "name": "Hủ Tiếu Xào Vịt",
+    "price": 89000,
+    "description": "Wok-fried Flat Rice Noodles with Duck",
+    "category": "Mỳ",
+    "image": "/images/my/hu-tieu-vit.jpg",
+    "id": 48
+  }
+]

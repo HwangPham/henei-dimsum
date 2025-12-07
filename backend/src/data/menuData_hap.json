@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Há cảo tôm",
+    "price": 55000,
+    "description": "Shrimp Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/ha-cao-tom.jpg",
+    "id": 11
+  },
+  {
+    "name": "Cảo Phượng nhãn",
+    "price": 55000,
+    "description": "Phoenix Eye Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-phuong-nhan.jpg",
+    "id": 12
+  },
+  {
+    "name": "Cảo sò điệp thượng hạng",
+    "price": 59000,
+    "description": "Premium Scallop Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-diep.jpg",
+    "id": 13
+  },
+  {
+    "name": "Xíu mại tôm thịt",
+    "price": 55000,
+    "description": "Scallop Dumpling",
+    "category": "Hấp",
+    "image": "/images/hap/xiu-mai-tom-thit.jpg",
+    "id": 14
+  },
+  {
+    "name": "Cảo Ngọc Bích",
+    "price": 49000,
+    "description": "Jade Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-ngoc-bich.jpg",
+    "id": 15
+  },
+  {
+    "name": "Cảo Kim Tiền Hoa Đậu Biếc",
+    "price": 55000,
+    "description": "Butterfly Pea Golden Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-kim-tien.jpg",
+    "id": 16
+  },
+  {
+    "name": "Cảo Hoàng Kim",
+    "price": 55000,
+    "description": "Golden Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-hoang-kim.jpg",
+    "id": 17
+  },
+  {
+    "name": "Rong biển thanh cua",
+    "price": 59000,
+    "description": "Seaweed Crab Stick Roll",
+    "category": "Hấp",
+    "image": "/images/hap/rong-bien-cua.jpg",
+    "id": 18
+  },
+  {
+    "name": "Bánh bao trà xanh",
+    "price": 55000,
+    "description": "Steamed Matcha Bun",
+    "category": "Hấp",
+    "image": "/images/hap/tra-xanh.jpg",
+    "id": 19
+  },
+  {
+    "name": "Bánh bao xá xíu",
+    "price": 55000,
+    "description": "Char Siu Buns",
+    "category": "Hấp",
+    "image": "/images/hap/xa-xiu.jpg",
+    "id": 20
+  },
+  {
+    "name": "Bánh bao kim sa",
+    "price": 59000,
+    "description": "Golden Lava Buns",
+    "category": "Hấp",
+    "image": "/images/hap/kim-sa.jpg",
+    "id": 21
+  },
+  {
+    "name": "Bánh bao Thượng Hải súp",
+    "price": 55000,
+    "description": "Shanghai Soup Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/thuong-hai.jpg",
+    "id": 22
+  },
+  {
+    "name": "Bánh cuốn tôm tươi",
+    "price": 69000,
+    "description": "Fresh Shrimp Rice Rolls",
+    "category": "Hấp",
+    "image": "/images/hap/banh-cuon.jpg",
+    "id": 23
+  },
+  {
+    "name": "Chân gà Tàu Xì",
+    "price": 59000,
+    "description": "Braised Chicken Feet with Black Bean",
+    "category": "Hấp",
+    "image": "/images/hap/chan-ga.jpg",
+    "id": 24
+  },
+  {
+    "name": "Sườn non Tàu Xì",
+    "price": 59000,
+    "description": "Steamed Pork Ribs with Black Bean",
+    "category": "Hấp",
+    "image": "/images/hap/suon-non.jpg",
+    "id": 25
+  }
+]

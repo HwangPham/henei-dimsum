@@ -1,0 +1,36 @@
+{
+  "name": "henei-dimsum",
+  "version": "1.0.0",
+  "description": "Website đặt món dimsum Hong Kong",
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm start",
+    "dev:frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:frontend": "cd frontend && npm run build",
+    "import:data": "cd backend && node importData.js"
+  },
+  "keywords": [
+    "dimsum",
+    "restaurant",
+    "food-ordering",
+    "hong-kong",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "Henei Dimsum Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/henei-dimsum.git"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.0.0"
+  }
+}

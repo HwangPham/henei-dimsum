@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Tôm Miến Tây Cầm",
+    "price": 115000,
+    "description": "Claypot Shrimp Vermicelli",
+    "category": "Xào",
+    "image": "/images/xao/tom-mien.jpg",
+    "id": 26
+  },
+  {
+    "name": "Tôm Sốt Mayone",
+    "price": 129000,
+    "description": "Shrimp with Mayonnaise",
+    "category": "Xào",
+    "image": "/images/xao/tom-mayone.jpg",
+    "id": 27
+  },
+  {
+    "name": "Bò Sốt Tiêu Đen",
+    "price": 149000,
+    "description": "Beef with Black Pepper Sauce",
+    "category": "Xào",
+    "image": "/images/xao/bo-tieu-den.jpg",
+    "id": 28
+  },
+  {
+    "name": "Thịt Xáo Chua Ngọt",
+    "price": 85000,
+    "description": "Sweet & Sour Pork",
+    "category": "Xào",
+    "image": "/images/xao/thit-chua-ngot.jpg",
+    "id": 29
+  },
+  {
+    "name": "Cải HongKong xào tỏi",
+    "price": 65000,
+    "description": "Hong Kong Choy Sum with Garlic",
+    "category": "Xào",
+    "image": "/images/xao/cai-toi.jpg",
+    "id": 30
+  },
+  {
+    "name": "Cải Sốt Tứ Xuyên",
+    "price": 65000,
+    "description": "Choy sum in Sichuan spicy sauce",
+    "category": "Xào",
+    "image": "/images/xao/cai-tu-xuyen.jpg",
+    "id": 31
+  },
+  {
+    "name": "Cải thìa sốt nấm đông cô",
+    "price": 79000,
+    "description": "Bok Choy with Shiitake Sauce",
+    "category": "Xào",
+    "image": "/images/xao/cai-dong-co.jpg",
+    "id": 32
+  },
+  {
+    "name": "Đậu que xào XO",
+    "price": 69000,
+    "description": "Stir-fried Beans with XO Sauce",
+    "category": "Xào",
+    "image": "/images/xao/dau-que.jpg",
+    "id": 33
+  },
+  {
+    "name": "Cơm chiên tôm sốt bào ngư",
+    "price": 75000,
+    "description": "Fried Rice with Shrimp and Abalone Sauce",
+    "category": "Xào",
+    "image": "/images/xao/com-tom-bao-ngu.jpg",
+    "id": 34
+  },
+  {
+    "name": "Cơm chiên vịt sốt cá mặn",
+    "price": 75000,
+    "description": "Salted Fish & Duck Fried Rice",
+    "category": "Xào",
+    "image": "/images/xao/com-vit.jpg",
+    "id": 35
+  },
+  {
+    "name": "Cơm chiên Macau",
+    "price": 75000,
+    "description": "Macau Style Fried Rice",
+    "category": "Xào",
+    "image": "/images/xao/com-macau.jpg",
+    "id": 36
+  },
+  {
+    "name": "Đậu hũ Tứ Xuyên",
+    "price": 75000,
+    "description": "Mapo Tofu",
+    "category": "Xào",
+    "image": "/images/xao/dau-hu.jpg",
+    "id": 37
+  },
+  {
+    "name": "Củ cải muối Quảng Đông",
+    "price": 25000,
+    "description": "Cantonese Pickled Radish",
+    "category": "Xào",
+    "image": "/images/xao/cu-cai.jpg",
+    "id": 38
+  },
+  {
+    "name": "Cơm trắng",
+    "price": 12000,
+    "description": "Rice",
+    "category": "Xào",
+    "image": "/images/xao/com-trang.jpg",
+    "id": 39
+  }
+]

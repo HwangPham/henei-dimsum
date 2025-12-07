@@ -1,0 +1,482 @@
+[
+  {
+    "name": "Hoành thánh tứ xuyên",
+    "price": 59000,
+    "description": "Sichuan Spicy Wontons",
+    "category": "Chiên",
+    "image": "/images/chien/hoanh-thanh-tu-xuyen.jpg",
+    "id": 1
+  },
+  {
+    "name": "Cuốn Tôm Da Giòn Hong Kong",
+    "price": 69000,
+    "description": "Hong Kong Crispy Shrimp Roll",
+    "category": "Chiên",
+    "image": "/images/chien/cuon-tom-da-gion.jpg",
+    "id": 2
+  },
+  {
+    "name": "Nem chiên hải sản",
+    "price": 89000,
+    "description": "Seafood Spring Rolls",
+    "category": "Chiên",
+    "image": "/images/chien/nem-hai-san.jpg",
+    "id": 3
+  },
+  {
+    "name": "Tôm viên chiên Lệ Chi",
+    "price": 59000,
+    "description": "Lychee-style Fried Shrimp Balls",
+    "category": "Chiên",
+    "image": "/images/chien/tom-vien-le-chi.jpg",
+    "id": 4
+  },
+  {
+    "name": "Hoành thánh tôm chiên",
+    "price": 59000,
+    "description": "Crispy Shrimp Wontons",
+    "category": "Chiên",
+    "image": "/images/chien/hoanh-thanh-tom.jpg",
+    "id": 5
+  },
+  {
+    "name": "Tàu hũ ky tôm thịt chiên",
+    "price": 69000,
+    "description": "Crispy Bean Curd Shrimp Roll",
+    "category": "Chiên",
+    "image": "/images/chien/tau-hu-ky.jpg",
+    "id": 6
+  },
+  {
+    "name": "Vịt quay HongKong (1/2 con)",
+    "price": 279000,
+    "description": "Roast Duck",
+    "category": "Chiên",
+    "image": "/images/chien/vit-quay.jpg",
+    "id": 7
+  },
+  {
+    "name": "Tôm chiên sốt hoàng kim (trứng muối)",
+    "price": 135000,
+    "description": "Golden Salted Egg Yolk Fried Shrimp",
+    "category": "Chiên",
+    "image": "/images/chien/tom-sot-hoang-kim.jpg",
+    "id": 8
+  },
+  {
+    "name": "Bánh bao thịt chiên",
+    "price": 55000,
+    "description": "Pan-fried Pork Buns",
+    "category": "Chiên",
+    "image": "/images/chien/banh-bao-thit.jpg",
+    "id": 9
+  },
+  {
+    "name": "Thịt xá xíu",
+    "price": 95000,
+    "description": "Char Siu Pork",
+    "category": "Chiên",
+    "image": "/images/chien/xa-xiu.jpg",
+    "id": 10
+  },
+  {
+    "name": "Há cảo tôm",
+    "price": 55000,
+    "description": "Shrimp Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/ha-cao-tom.jpg",
+    "id": 11
+  },
+  {
+    "name": "Cảo Phượng nhãn",
+    "price": 55000,
+    "description": "Phoenix Eye Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-phuong-nhan.jpg",
+    "id": 12
+  },
+  {
+    "name": "Cảo sò điệp thượng hạng",
+    "price": 59000,
+    "description": "Premium Scallop Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-diep.jpg",
+    "id": 13
+  },
+  {
+    "name": "Xíu mại tôm thịt",
+    "price": 55000,
+    "description": "Scallop Dumpling",
+    "category": "Hấp",
+    "image": "/images/hap/xiu-mai-tom-thit.jpg",
+    "id": 14
+  },
+  {
+    "name": "Cảo Ngọc Bích",
+    "price": 49000,
+    "description": "Jade Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-ngoc-bich.jpg",
+    "id": 15
+  },
+  {
+    "name": "Cảo Kim Tiền Hoa Đậu Biếc",
+    "price": 55000,
+    "description": "Butterfly Pea Golden Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-kim-tien.jpg",
+    "id": 16
+  },
+  {
+    "name": "Cảo Hoàng Kim",
+    "price": 55000,
+    "description": "Golden Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/cao-hoang-kim.jpg",
+    "id": 17
+  },
+  {
+    "name": "Rong biển thanh cua",
+    "price": 59000,
+    "description": "Seaweed Crab Stick Roll",
+    "category": "Hấp",
+    "image": "/images/hap/rong-bien-cua.jpg",
+    "id": 18
+  },
+  {
+    "name": "Bánh bao trà xanh",
+    "price": 55000,
+    "description": "Steamed Matcha Bun",
+    "category": "Hấp",
+    "image": "/images/hap/tra-xanh.jpg",
+    "id": 19
+  },
+  {
+    "name": "Bánh bao xá xíu",
+    "price": 55000,
+    "description": "Char Siu Buns",
+    "category": "Hấp",
+    "image": "/images/hap/xa-xiu.jpg",
+    "id": 20
+  },
+  {
+    "name": "Bánh bao kim sa",
+    "price": 59000,
+    "description": "Golden Lava Buns",
+    "category": "Hấp",
+    "image": "/images/hap/kim-sa.jpg",
+    "id": 21
+  },
+  {
+    "name": "Bánh bao Thượng Hải súp",
+    "price": 55000,
+    "description": "Shanghai Soup Dumplings",
+    "category": "Hấp",
+    "image": "/images/hap/thuong-hai.jpg",
+    "id": 22
+  },
+  {
+    "name": "Bánh cuốn tôm tươi",
+    "price": 69000,
+    "description": "Fresh Shrimp Rice Rolls",
+    "category": "Hấp",
+    "image": "/images/hap/banh-cuon.jpg",
+    "id": 23
+  },
+  {
+    "name": "Chân gà Tàu Xì",
+    "price": 59000,
+    "description": "Braised Chicken Feet with Black Bean",
+    "category": "Hấp",
+    "image": "/images/hap/chan-ga.jpg",
+    "id": 24
+  },
+  {
+    "name": "Sườn non Tàu Xì",
+    "price": 59000,
+    "description": "Steamed Pork Ribs with Black Bean",
+    "category": "Hấp",
+    "image": "/images/hap/suon-non.jpg",
+    "id": 25
+  },
+  {
+    "name": "Tôm Miến Tây Cầm",
+    "price": 115000,
+    "description": "Claypot Shrimp Vermicelli",
+    "category": "Xào",
+    "image": "/images/xao/tom-mien.jpg",
+    "id": 26
+  },
+  {
+    "name": "Tôm Sốt Mayone",
+    "price": 129000,
+    "description": "Shrimp with Mayonnaise",
+    "category": "Xào",
+    "image": "/images/xao/tom-mayone.jpg",
+    "id": 27
+  },
+  {
+    "name": "Bò Sốt Tiêu Đen",
+    "price": 149000,
+    "description": "Beef with Black Pepper Sauce",
+    "category": "Xào",
+    "image": "/images/xao/bo-tieu-den.jpg",
+    "id": 28
+  },
+  {
+    "name": "Thịt Xáo Chua Ngọt",
+    "price": 85000,
+    "description": "Sweet & Sour Pork",
+    "category": "Xào",
+    "image": "/images/xao/thit-chua-ngot.jpg",
+    "id": 29
+  },
+  {
+    "name": "Cải HongKong xào tỏi",
+    "price": 65000,
+    "description": "Hong Kong Choy Sum with Garlic",
+    "category": "Xào",
+    "image": "/images/xao/cai-toi.jpg",
+    "id": 30
+  },
+  {
+    "name": "Cải Sốt Tứ Xuyên",
+    "price": 65000,
+    "description": "Choy sum in Sichuan spicy sauce",
+    "category": "Xào",
+    "image": "/images/xao/cai-tu-xuyen.jpg",
+    "id": 31
+  },
+  {
+    "name": "Cải thìa sốt nấm đông cô",
+    "price": 79000,
+    "description": "Bok Choy with Shiitake Sauce",
+    "category": "Xào",
+    "image": "/images/xao/cai-dong-co.jpg",
+    "id": 32
+  },
+  {
+    "name": "Đậu que xào XO",
+    "price": 69000,
+    "description": "Stir-fried Beans with XO Sauce",
+    "category": "Xào",
+    "image": "/images/xao/dau-que.jpg",
+    "id": 33
+  },
+  {
+    "name": "Cơm chiên tôm sốt bào ngư",
+    "price": 75000,
+    "description": "Fried Rice with Shrimp and Abalone Sauce",
+    "category": "Xào",
+    "image": "/images/xao/com-tom-bao-ngu.jpg",
+    "id": 34
+  },
+  {
+    "name": "Cơm chiên vịt sốt cá mặn",
+    "price": 75000,
+    "description": "Salted Fish & Duck Fried Rice",
+    "category": "Xào",
+    "image": "/images/xao/com-vit.jpg",
+    "id": 35
+  },
+  {
+    "name": "Cơm chiên Macau",
+    "price": 75000,
+    "description": "Macau Style Fried Rice",
+    "category": "Xào",
+    "image": "/images/xao/com-macau.jpg",
+    "id": 36
+  },
+  {
+    "name": "Đậu hũ Tứ Xuyên",
+    "price": 75000,
+    "description": "Mapo Tofu",
+    "category": "Xào",
+    "image": "/images/xao/dau-hu.jpg",
+    "id": 37
+  },
+  {
+    "name": "Củ cải muối Quảng Đông",
+    "price": 25000,
+    "description": "Cantonese Pickled Radish",
+    "category": "Xào",
+    "image": "/images/xao/cu-cai.jpg",
+    "id": 38
+  },
+  {
+    "name": "Cơm trắng",
+    "price": 12000,
+    "description": "Rice",
+    "category": "Xào",
+    "image": "/images/xao/com-trang.jpg",
+    "id": 39
+  },
+  {
+    "name": "Mì Hoành Thánh (khô, nước)",
+    "price": 69000,
+    "description": "Wonton Noodles",
+    "category": "Mỳ",
+    "image": "/images/my/mi-hoanh-thanh.jpg",
+    "id": 40
+  },
+  {
+    "name": "Mỳ EFU Xá Xíu",
+    "price": 119000,
+    "description": "Wok-fried Efu Noodles with Barbecued Pork",
+    "category": "Mỳ",
+    "image": "/images/my/efu-xa-xiu.jpg",
+    "id": 41
+  },
+  {
+    "name": "Mì Xá Xíu (khô, nước)",
+    "price": 69000,
+    "description": "Char Siu Noodles",
+    "category": "Mỳ",
+    "image": "/images/my/mi-xa-xiu.jpg",
+    "id": 42
+  },
+  {
+    "name": "Mì Hoành Thánh Xá Xíu (khô - nước)",
+    "price": 75000,
+    "description": "Wonton Char Siu Noodles",
+    "category": "Mỳ",
+    "image": "/images/my/mi-hoanh-thanh-xa-xiu.jpg",
+    "id": 43
+  },
+  {
+    "name": "Canh Hoành Thánh",
+    "price": 75000,
+    "description": "Wonton Soup",
+    "category": "Mỳ",
+    "image": "/images/my/canh-hoanh-thanh.jpg",
+    "id": 44
+  },
+  {
+    "name": "Hủ Tiếu Xào Hải Sản",
+    "price": 129000,
+    "description": "Wok-fried Seafood Noodle",
+    "category": "Mỳ",
+    "image": "/images/my/hu-tieu-hai-san.jpg",
+    "id": 45
+  },
+  {
+    "name": "Hủ Tiếu Xào Bò",
+    "price": 89000,
+    "description": "Wok-fried Flat Noodles with Beef",
+    "category": "Mỳ",
+    "image": "/images/my/hu-tieu-bo.jpg",
+    "id": 46
+  },
+  {
+    "name": "Mỳ Efu Vịt Sốt Tiêu Đen",
+    "price": 119000,
+    "description": "Wok-fried Efu Noodles with Duck in Black Pepper Sauce",
+    "category": "Mỳ",
+    "image": "/images/my/efu-vit.jpg",
+    "id": 47
+  },
+  {
+    "name": "Hủ Tiếu Xào Vịt",
+    "price": 89000,
+    "description": "Wok-fried Flat Rice Noodles with Duck",
+    "category": "Mỳ",
+    "image": "/images/my/hu-tieu-vit.jpg",
+    "id": 48
+  },
+  {
+    "name": "Nước táo lên men Tiandi",
+    "price": 29000,
+    "description": "Fermented apple juice",
+    "category": "Nước",
+    "image": "/images/nuoc/tiandi.jpg",
+    "id": 49
+  },
+  {
+    "name": "Trà thảo mộc Wanglaoji",
+    "price": 29000,
+    "description": "Wanglaoji herbal tea",
+    "category": "Nước",
+    "image": "/images/nuoc/wanglaoji.jpg",
+    "id": 50
+  },
+  {
+    "name": "Pepsi / không calo",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/pepsi.jpg",
+    "id": 51
+  },
+  {
+    "name": "7Up",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/7up.jpg",
+    "id": 52
+  },
+  {
+    "name": "Twister",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/twister.jpg",
+    "id": 53
+  },
+  {
+    "name": "Mirinda",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/mirinda.jpg",
+    "id": 54
+  },
+  {
+    "name": "Bia Hà Nội",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/bia-hn.jpg",
+    "id": 55
+  },
+  {
+    "name": "Bia 333",
+    "price": 25000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/bia-333.jpg",
+    "id": 56
+  },
+  {
+    "name": "Trà tắc",
+    "price": 20000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/tra-tac.jpg",
+    "id": 57
+  },
+  {
+    "name": "Nước suối",
+    "price": 15000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/nuoc-suoi.jpg",
+    "id": 58
+  },
+  {
+    "name": "Nước đậu nành",
+    "price": 15000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/dau-nanh.jpg",
+    "id": 59
+  },
+  {
+    "name": "Trà sâm dứa",
+    "price": 12000,
+    "description": "",
+    "category": "Nước",
+    "image": "/images/nuoc/sam-dua.jpg",
+    "id": 60
+  }
+]
