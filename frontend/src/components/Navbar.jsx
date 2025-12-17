@@ -1,12 +1,9 @@
 // src/components/Navbar.jsx
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { CartContext } from "../contexts/CartContext";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { cartItems } = useContext(CartContext);
-  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -26,30 +23,31 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
+          to="/reservation"
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+        >
+          Đặt Bàn
+        </NavLink>
+
+        <NavLink
+          to="/preorder"
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+        >
+          Đặt Hàng
+        </NavLink>
+
+        <NavLink
+          to="/promotions"
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+        >
+          Ưu Đãi
+        </NavLink>
+
+        <NavLink
           to="/about"
           className={({ isActive }) => (isActive ? "active-link" : "")}
         >
           Giới Thiệu
-        </NavLink>
-
-        {/* 👇 Link quản lý đơn cho admin */}
-        <NavLink
-          to="/admin/orders"
-          className={({ isActive }) => (isActive ? "active-link" : "")}
-        >
-          Quản Lý Đơn
-        </NavLink>
-
-        <NavLink
-          to="/cart"
-          className={({ isActive }) =>
-            isActive ? "active-link cart-link" : "cart-link"
-          }
-        >
-          🛒
-          {totalItems > 0 && (
-            <span className="cart-count">{totalItems}</span>
-          )}
         </NavLink>
       </div>
 

@@ -1,82 +1,153 @@
 import React, { useState, useEffect } from "react";
-import DishCard from "../components/DishCard";
 import "./MenuPage.css";
-import { dishesAPI } from "../services/api";
 
-const categories = ["Tất cả", "Chiên", "Hấp", "Xào", "Mỳ", "Nước"];
+const menuCategories = [
+  {
+    id: "chien",
+    name: "MÓN CHIÊN - FRIED DISHES",
+    images: [
+      "/images/chien/chien-new-1.webp",
+      "/images/chien/chien-new-2.webp"
+    ]
+  },
+  {
+    id: "hap",
+    name: "MÓN HẤP - STEAMED DISHES",
+    images: [
+      "/images/hap/hap-new-1.webp",
+      "/images/hap/hap-new-2.webp"
+    ]
+  },
+  {
+    id: "xao",
+    name: "MÓN XÀO - STIR-FRIED DISHES",
+    images: [
+      "/images/xao/xao-com.webp",
+      "/images/xao/xao-new.webp"
+    ]
+  },
+  {
+    id: "my",
+    name: "MÓN MỲ - NOODLES",
+    images: [
+      "/images/my/my-new.webp"
+    ]
+  },
+  {
+    id: "nuoc",
+    name: "MÓN NƯỚC - DRINKS AND DESSERTS",
+    images: [
+      "/images/nuoc/drink.webp"
+    ]
+  }
+];
 
 const MenuPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Tất cả");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [menuData, setMenuData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState({});
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Fetch dishes từ backend khi component mount
   useEffect(() => {
-    const fetchDishes = async () => {
-      try {
-        setLoading(true);
-        const dishes = await dishesAPI.getAllDishes();
-        setMenuData(dishes);
-        setError(null);
-      } catch (err) {
-        setError("Không thể tải dữ liệu món ăn. Vui lòng thử lại sau.");
-        console.error("Error loading dishes:", err);
-      } finally {
-        setLoading(false);
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
       }
     };
 
-    fetchDishes();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const filteredMenu = menuData.filter((dish) => {
-    const matchesCategory =
-      selectedCategory === "Tất cả" || dish.category === selectedCategory;
-    const matchesSearch =
-      dish.name.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  const nextImage = (categoryId, totalImages) => {
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [categoryId]: ((prev[categoryId] || 0) + 1) % totalImages
+    }));
+  };
+
+  const prevImage = (categoryId, totalImages) => {
+    setCurrentImageIndex(prev => ({
+      ...prev,
+      [categoryId]: ((prev[categoryId] || 0) - 1 + totalImages) % totalImages
+    }));
+  };
 
   return (
     <div className="menu-container">
-        <h2 className="menu-heading">Thực đơn Henei Dimsum</h2>
+      <div className="menu-header">
+        <h1>THỰC ĐƠN</h1>
+        <p>Menu đặc sắc với hương vị Hồng Kông chính gốc</p>
+      </div>
 
-        <div className="menu-nav">
-        {categories.map((cat) => (
-            <button
-                key={cat}
-                className={selectedCategory === cat ? "active" : ""}
-                onClick={() => setSelectedCategory(cat)}
-            >
-                {cat}
-            </button>
+      <div className="menu-sidebar">
+        {menuCategories.map((category) => (
+          <a key={category.id} href={`#${category.id}`} className="sidebar-link">
+            {category.name.split(' - ')[0]}
+          </a>
         ))}
-        </div>
+      </div>
 
-        <div className="menu-search">
-            <input
-                type="text"
-                placeholder="Tìm món theo tên..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
-        </div>
+      <div className="menu-content">
+        {menuCategories.map((category) => {
+          const currentIndex = currentImageIndex[category.id] || 0;
+          return (
+            <div key={category.id} id={category.id} className="menu-category">
+              <h2>{category.name}</h2>
+              <div className="menu-image-container">
+                <img 
+                  src={category.images[currentIndex]} 
+                  alt={category.name}
+                  className="menu-image"
+                />
+                {category.images.length > 1 && (
+                  <>
+                    <button 
+                      className="nav-btn prev-btn"
+                      onClick={() => prevImage(category.id, category.images.length)}
+                    >
+                      ‹
+                    </button>
+                    <button 
+                      className="nav-btn next-btn"
+                      onClick={() => nextImage(category.id, category.images.length)}
+                    >
+                      ›
+                    </button>
+                    <div className="image-dots">
+                      {category.images.map((_, index) => (
+                        <span 
+                          key={index}
+                          className={`dot ${index === currentIndex ? 'active' : ''}`}
+                          onClick={() => setCurrentImageIndex(prev => ({
+                            ...prev,
+                            [category.id]: index
+                          }))}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
 
-        {loading && <div className="loading">Đang tải món ăn...</div>}
-        {error && <div className="error">{error}</div>}
-
-        {!loading && !error && (
-          <div className="menu-grid">
-              {filteredMenu.map((dish) => (
-                <DishCard key={dish._id} dish={dish} />
-              ))}
-          </div>
-        )}
+      {showScrollTop && (
+        <button className="scroll-to-top" onClick={scrollToTop}>
+          ↑
+        </button>
+      )}
     </div>
-
-    );
+  );
 };
 
 export default MenuPage;

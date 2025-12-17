@@ -1,0 +1,586 @@
+[
+  {
+    "id": 1,
+    "category": "Chiên",
+    "name": "Vịt quay Hongkong (1/2 con)",
+    "price": 279000,
+    "description": "Roast Duck",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "category": "Chiên",
+    "name": "Bánh Bao Thịt Chiên",
+    "price": 55000,
+    "description": "Pan-fried Pork Buns",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "category": "Chiên",
+    "name": "Mực Rang Muối Hồng Kông",
+    "price": 169000,
+    "description": "Hong Kong Salted Fried Squid",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "category": "Chiên",
+    "name": "Tàu Hũ Kỳ Tôm Thịt Chiên",
+    "price": 69000,
+    "description": "Crispy Bean Curd Shrimp Roll",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "category": "Chiên",
+    "name": "Thịt xá xíu",
+    "price": 95000,
+    "description": "Char Siu Pork",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "category": "Chiên",
+    "name": "Nem Chiên Hải Sản",
+    "price": 95000,
+    "description": "Seafood Spring Rolls",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "category": "Chiên",
+    "name": "Hoành Thánh Tứ Xuyên",
+    "price": 59000,
+    "description": "Sichuan Spicy Wontons",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "category": "Chiên",
+    "name": "Tôm Viên Chiên Lệ Chi (Set 3)",
+    "price": 75000,
+    "description": "Lychee-style Fried Shrimp Balls (Set 3)",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "category": "Chiên",
+    "name": "Tôm Viên Chiên Lệ Chi (Set 6)",
+    "price": 149000,
+    "description": "Lychee-style Fried Shrimp Balls (Set 6)",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "category": "Chiên",
+    "name": "Hoành Thánh Tôm Chiên",
+    "price": 59000,
+    "description": "Crispy Shrimp Wontons",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "category": "Chiên",
+    "name": "Bánh Tôm Chiên Phô Mai",
+    "price": 69000,
+    "description": "Golden Cheese Shrimp Fritters",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "category": "Chiên",
+    "name": "Tôm Hoàng Kim (sốt trứng muối)",
+    "price": 135000,
+    "description": "Golden Prawn",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "category": "Chiên",
+    "name": "Cuốn Tôm Da Giòn Hong Kong",
+    "price": 69000,
+    "description": "Hong Kong Crispy Shrimp Roll",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "category": "Hấp",
+    "name": "Cảo Tôm (Set 3)",
+    "price": 55000,
+    "description": "Shrimp Dumplings (Set 3)",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "category": "Hấp",
+    "name": "Cảo Tôm (Set 6)",
+    "price": 109000,
+    "description": "Shrimp Dumplings (Set 6)",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "category": "Hấp",
+    "name": "Cảo Sò Điệp Thượng Hạng (Set 3)",
+    "price": 59000,
+    "description": "Premium Scallop Dumplings (Set 3)",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "category": "Hấp",
+    "name": "Cảo Sò Điệp Thượng Hạng (Set 6)",
+    "price": 119000,
+    "description": "Premium Scallop Dumplings (Set 6)",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "category": "Hấp",
+    "name": "Cảo Phượng Nhãn (Set 3)",
+    "price": 59000,
+    "description": "Phoenix Eye Dumplings (Set 3)",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "category": "Hấp",
+    "name": "Cảo Phượng Nhãn (Set 6)",
+    "price": 119000,
+    "description": "Phoenix Eye Dumplings (Set 6)",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "category": "Hấp",
+    "name": "Xíu Mại Tôm Thịt (Set 3)",
+    "price": 55000,
+    "description": "Siu Mai (Set 3)",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "category": "Hấp",
+    "name": "Xíu Mại Tôm Thịt (Set 6)",
+    "price": 109000,
+    "description": "Siu Mai (Set 6)",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "category": "Hấp",
+    "name": "Cảo Kim Tiền Hoa Đậu Biếc (Set 3)",
+    "price": 55000,
+    "description": "Butterfly Pea Golden Dumplings (Set 3)",
+    "image": ""
+  },
+  {
+    "id": 23,
+    "category": "Hấp",
+    "name": "Cảo Kim Tiền Hoa Đậu Biếc (Set 6)",
+    "price": 109000,
+    "description": "Butterfly Pea Golden Dumplings (Set 6)",
+    "image": ""
+  },
+  {
+    "id": 24,
+    "category": "Hấp",
+    "name": "Cảo Hoàng Kim (Set 3)",
+    "price": 55000,
+    "description": "Golden Dumplings (Set 3)",
+    "image": ""
+  },
+  {
+    "id": 25,
+    "category": "Hấp",
+    "name": "Cảo Hoàng Kim (Set 6)",
+    "price": 109000,
+    "description": "Golden Dumplings (Set 6)",
+    "image": ""
+  },
+  {
+    "id": 26,
+    "category": "Hấp",
+    "name": "Cảo Ngọc Bích (Set 3)",
+    "price": 49000,
+    "description": "Jade Dumplings (Set 3)",
+    "image": ""
+  },
+  {
+    "id": 27,
+    "category": "Hấp",
+    "name": "Cảo Ngọc Bích (Set 6)",
+    "price": 99000,
+    "description": "Jade Dumplings (Set 6)",
+    "image": ""
+  },
+  {
+    "id": 28,
+    "category": "Hấp",
+    "name": "Rong Biển Thanh Cua (Set 3)",
+    "price": 59000,
+    "description": "Seaweed Crab Stick Roll (Set 3)",
+    "image": ""
+  },
+  {
+    "id": 29,
+    "category": "Hấp",
+    "name": "Rong Biển Thanh Cua (Set 6)",
+    "price": 119000,
+    "description": "Seaweed Crab Stick Roll (Set 6)",
+    "image": ""
+  },
+  {
+    "id": 30,
+    "category": "Hấp",
+    "name": "Bánh bao trà xanh",
+    "price": 55000,
+    "description": "Matcha Buns",
+    "image": ""
+  },
+  {
+    "id": 31,
+    "category": "Hấp",
+    "name": "Bánh Bao Xá Xíu",
+    "price": 55000,
+    "description": "Char Siu Buns",
+    "image": ""
+  },
+  {
+    "id": 32,
+    "category": "Hấp",
+    "name": "Bánh Bao Kim Sa",
+    "price": 59000,
+    "description": "Golden Lava Buns",
+    "image": ""
+  },
+  {
+    "id": 33,
+    "category": "Hấp",
+    "name": "Bánh bao Thượng Hải (Xiao Long Bao)",
+    "price": 55000,
+    "description": "Shanghai Soup Dumplings (Xiao Long Bao)",
+    "image": ""
+  },
+  {
+    "id": 34,
+    "category": "Hấp",
+    "name": "Sườn Non Tàu Xì",
+    "price": 59000,
+    "description": "Steamed Pork Ribs with Black Bean",
+    "image": ""
+  },
+  {
+    "id": 35,
+    "category": "Hấp",
+    "name": "Bánh cuốn tôm tươi",
+    "price": 69000,
+    "description": "Crispy Bean Curd Shrimp Roll",
+    "image": ""
+  },
+  {
+    "id": 36,
+    "category": "Hấp",
+    "name": "Chân Gà Tàu Xì",
+    "price": 59000,
+    "description": "Braised Chicken Feet with Black Bean",
+    "image": ""
+  },
+  {
+    "id": 37,
+    "category": "Mỳ",
+    "name": "Mỳ Efu Xào Xá Xíu",
+    "price": 119000,
+    "description": "Wok-fried Efu Noodles with Barbecued Pork",
+    "image": ""
+  },
+  {
+    "id": 38,
+    "category": "Mỳ",
+    "name": "Mì Xá Xíu (khô, nước)",
+    "price": 69000,
+    "description": "Char Siu Noodles",
+    "image": ""
+  },
+  {
+    "id": 39,
+    "category": "Mỳ",
+    "name": "Mì Hoành Thánh Xá Xíu (khô, nước)",
+    "price": 75000,
+    "description": "Wonton Char Siu Noodles",
+    "image": ""
+  },
+  {
+    "id": 40,
+    "category": "Mỳ",
+    "name": "Hủ Tíu Xào Bò",
+    "price": 89000,
+    "description": "Wok-fried Flat Rice Noodles with Beef",
+    "image": ""
+  },
+  {
+    "id": 41,
+    "category": "Mỳ",
+    "name": "Canh Hoành Thánh",
+    "price": 75000,
+    "description": "Wonton Soup",
+    "image": ""
+  },
+  {
+    "id": 42,
+    "category": "Mỳ",
+    "name": "Hủ Tíu Xào Hải Sản",
+    "price": 125000,
+    "description": "Wok-fried Seafood Noodle",
+    "image": ""
+  },
+  {
+    "id": 43,
+    "category": "Mỳ",
+    "name": "Mì Hoành Thánh (khô, nước)",
+    "price": 69000,
+    "description": "Wonton Noodles",
+    "image": ""
+  },
+  {
+    "id": 44,
+    "category": "Mỳ",
+    "name": "Hủ Tíu Xào Vịt",
+    "price": 89000,
+    "description": "Wok-fried Flat Rice Noodles with Duck",
+    "image": ""
+  },
+  {
+    "id": 45,
+    "category": "Mỳ",
+    "name": "Mỳ Efu Vịt Sốt Tiêu Đen",
+    "price": 119000,
+    "description": "Wok-fried Efu Noodles with Duck in Black Pepper Sauce",
+    "image": ""
+  },
+  {
+    "id": 46,
+    "category": "Xào",
+    "name": "Tôm Sốt Mayone",
+    "price": 129000,
+    "description": "Shrimp with Mayonnaise",
+    "image": ""
+  },
+  {
+    "id": 47,
+    "category": "Xào",
+    "name": "Đậu Hũ Tứ Xuyên",
+    "price": 79000,
+    "description": "Mapo Tofu",
+    "image": ""
+  },
+  {
+    "id": 48,
+    "category": "Xào",
+    "name": "Canh Rau Dền Kim Ngân",
+    "price": 85000,
+    "description": "Amaranth Greens with Golden Flower",
+    "image": ""
+  },
+  {
+    "id": 49,
+    "category": "Xào",
+    "name": "Gà Cung Bảo",
+    "price": 139000,
+    "description": "Kung Pao Chicken",
+    "image": ""
+  },
+  {
+    "id": 50,
+    "category": "Xào",
+    "name": "Tôm Miến Tay Cầm",
+    "price": 115000,
+    "description": "Claypot Shrimp Vermicelli",
+    "image": ""
+  },
+  {
+    "id": 51,
+    "category": "Xào",
+    "name": "Bò Sốt Tiêu Đen",
+    "price": 149000,
+    "description": "Beef with Black Pepper Sauce",
+    "image": ""
+  },
+  {
+    "id": 52,
+    "category": "Xào",
+    "name": "Củ Cải Muối Quảng Đông",
+    "price": 25000,
+    "description": "Cantonese Pickled Radish",
+    "image": ""
+  },
+  {
+    "id": 53,
+    "category": "Xào",
+    "name": "Cải Thìa Sốt Nấm Đông Cô",
+    "price": 79000,
+    "description": "Bok Choy with Shiitake Sauce",
+    "image": ""
+  },
+  {
+    "id": 54,
+    "category": "Xào",
+    "name": "Cải Hongkong Sốt Dầu Hào",
+    "price": 65000,
+    "description": "Hong Kong Choy Sum with Oyster Sauce",
+    "image": ""
+  },
+  {
+    "id": 55,
+    "category": "Xào",
+    "name": "Cải HongKong Xào Tỏi",
+    "price": 65000,
+    "description": "Hong Kong Choy Sum with Garlic",
+    "image": ""
+  },
+  {
+    "id": 56,
+    "category": "Xào",
+    "name": "Đậu Que Xào XO",
+    "price": 75000,
+    "description": "Stir-fried Beans with XO Sauce",
+    "image": ""
+  },
+  {
+    "id": 57,
+    "category": "Cơm",
+    "name": "Cơm Chiên Hải Sản",
+    "price": 99000,
+    "description": "Shrimp Fried Rice with Abalone Sauce",
+    "image": ""
+  },
+  {
+    "id": 58,
+    "category": "Cơm",
+    "name": "Cơm Chiên Gà Sốt Cá Mặn",
+    "price": 75000,
+    "description": "Salted Fish & Chicken Fried Rice",
+    "image": ""
+  },
+  {
+    "id": 59,
+    "category": "Cơm",
+    "name": "Cơm Chiên Macau",
+    "price": 75000,
+    "description": "Macau Style Fried Rice",
+    "image": ""
+  },
+  {
+    "id": 60,
+    "category": "Cơm",
+    "name": "Cơm Chiên Dương Châu",
+    "price": 75000,
+    "description": "Yangzhou Fried Rice",
+    "image": ""
+  },
+  {
+    "id": 61,
+    "category": "Cơm",
+    "name": "Cơm Trắng",
+    "price": 12000,
+    "description": "Rice",
+    "image": ""
+  },
+  {
+    "id": 62,
+    "category": "Tráng miệng",
+    "name": "Dương Chi Kem",
+    "price": 39000,
+    "description": "Mango Pomelo Sago with Ice Cream",
+    "image": ""
+  },
+  {
+    "id": 63,
+    "category": "Tráng miệng",
+    "name": "Quy Linh Cao",
+    "price": 25000,
+    "description": "Traditional Guiling Herbal Jelly",
+    "image": ""
+  },
+  {
+    "id": 64,
+    "category": "Nước",
+    "name": "Nước Táo Lên Men Tiandi",
+    "price": 35000,
+    "description": "Fermented apple juice",
+    "image": ""
+  },
+  {
+    "id": 65,
+    "category": "Nước",
+    "name": "Trà Thảo Mộc Wanglaoji",
+    "price": 29000,
+    "description": "Wanglaoji herbal tea",
+    "image": ""
+  },
+  {
+    "id": 66,
+    "category": "Nước",
+    "name": "Pepsi / Không Calo",
+    "price": 25000,
+    "description": "Pepsi / Pepsi không calo",
+    "image": ""
+  },
+  {
+    "id": 67,
+    "category": "Nước",
+    "name": "Nước cam",
+    "price": 25000,
+    "description": "Orange juice",
+    "image": ""
+  },
+  {
+    "id": 68,
+    "category": "Nước",
+    "name": "Bia Hà Nội",
+    "price": 25000,
+    "description": "Hanoi beer",
+    "image": ""
+  },
+  {
+    "id": 69,
+    "category": "Nước",
+    "name": "Bia 333",
+    "price": 25000,
+    "description": "333 beer",
+    "image": ""
+  },
+  {
+    "id": 70,
+    "category": "Nước",
+    "name": "Trà tắc",
+    "price": 20000,
+    "description": "Kumquat tea",
+    "image": ""
+  },
+  {
+    "id": 71,
+    "category": "Nước",
+    "name": "Nước suối",
+    "price": 15000,
+    "description": "Mineral water",
+    "image": ""
+  },
+  {
+    "id": 72,
+    "category": "Nước",
+    "name": "Nước đậu nành",
+    "price": 15000,
+    "description": "Soy milk",
+    "image": ""
+  },
+  {
+    "id": 73,
+    "category": "Nước",
+    "name": "Trà sâm dứa",
+    "price": 12000,
+    "description": "Pandan tea",
+    "image": ""
+  }
+]

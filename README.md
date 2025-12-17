@@ -417,31 +417,56 @@ git push -u origin main
 
 ## 🚀 Deploy lên Production
 
-### Deploy Backend (Render/Railway/Heroku)
+### 🌟 Deploy Fullstack lên Vercel (Khuyên dùng)
+
+Deploy cả frontend và backend lên Vercel - nhanh chóng, miễn phí, và dễ dàng!
+
+#### 📖 Hướng dẫn chi tiết:
+- **Quick Start**: [QUICKSTART_VERCEL.md](./QUICKSTART_VERCEL.md) - Deploy trong 10 phút
+- **Full Guide**: [VERCEL_DEPLOY.md](./VERCEL_DEPLOY.md) - Hướng dẫn đầy đủ với troubleshooting
+
+#### ⚡ Các bước cơ bản:
+
+**1. Deploy Backend:**
+- Vào [Vercel](https://vercel.com) > Add New Project
+- Import repository > Set Root Directory: `backend`
+- Add Environment Variables: `MONGO_URI`, `JWT_SECRET`, `NODE_ENV`
+- Deploy → Nhận URL: `https://henei-dimsum-backend.vercel.app`
+
+**2. Deploy Frontend:**
+- Add New Project > Import repository lần nữa
+- Set Root Directory: `frontend`
+- Add Environment Variable: `REACT_APP_API_URL` = backend URL
+- Deploy → Nhận URL: `https://henei-dimsum.vercel.app`
+
+**3. Auto Scripts (Tùy chọn):**
+```bash
+# Windows
+deploy-vercel.bat
+
+# Linux/Mac
+bash deploy-vercel.sh
+```
+
+---
+
+### 🔄 Deploy Backend (Alternative: Render/Railway)
+
+Xem hướng dẫn chi tiết trong [DEPLOY.md](./DEPLOY.md)
 
 1. Tạo account trên [Render.com](https://render.com)
 2. Connect GitHub repository
-3. Thêm environment variables:
-   - `MONGO_URI`
-   - `PORT` (Render tự động set)
-   - `JWT_SECRET`
-4. Deploy!
+3. Set Root Directory: `backend`
+4. Thêm environment variables: `MONGO_URI`, `JWT_SECRET`, `NODE_ENV`
+5. Deploy!
 
-### Deploy Frontend (Vercel/Netlify)
+---
 
-```bash
-# Build production
-cd frontend
-npm run build
+### 📚 Tài liệu Deploy đầy đủ
 
-# Deploy lên Vercel
-npm i -g vercel
-vercel --prod
-```
-
-Hoặc connect GitHub repo với Vercel/Netlify để auto-deploy.
-
-**Lưu ý**: Cập nhật `REACT_APP_API_URL` trong frontend environment variables trỏ đến backend production URL.
+- [DEPLOY.md](./DEPLOY.md) - Hướng dẫn deploy đầy đủ (Vercel, Render, Railway, Netlify)
+- [VERCEL_DEPLOY.md](./VERCEL_DEPLOY.md) - Chi tiết Vercel deployment
+- [QUICKSTART_VERCEL.md](./QUICKSTART_VERCEL.md) - Quick start cho Vercel
 
 ## 🤝 Đóng góp
 

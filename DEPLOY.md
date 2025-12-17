@@ -134,50 +134,185 @@ heroku logs --tail
 
 ---
 
-## 🌐 Deploy Frontend
+## 🌐 Deploy Frontend & Backend lên Vercel
 
-### Vercel (Recommended)
+### Vercel Full-Stack Deploy (Recommended)
 
-**Ưu điểm**: Tối ưu cho React, CDN toàn cầu, tự động build
+**Ưu điểm**: Deploy cả frontend và backend trên cùng 1 platform, serverless functions, CDN toàn cầu
 
-#### Cách 1: Deploy qua Vercel CLI
+---
+
+### 🔥 Bước 1: Deploy Backend lên Vercel
+
+#### Chuẩn bị:
+- File `backend/vercel.json` đã được tạo sẵn
+- Cấu hình MongoDB Atlas (xem phần MongoDB Atlas ở trên)
+
+#### Deploy Backend:
+
+**Cách 1: Qua Vercel Dashboard**
+
+1. Đăng ký/đăng nhập [Vercel](https://vercel.com)
+2. Click **Add New... > Project**
+3. Import Git Repository (hoặc kết nối GitHub lần đầu)
+4. Chọn repository `henei-dimsum`
+5. Cấu hình project:
+   - **Project Name**: `henei-dimsum-backend`
+   - **Framework Preset**: Other
+   - **Root Directory**: `backend` ⚠️ QUAN TRỌNG!
+   - **Build Command**: `npm install` (hoặc để trống)
+   - **Output Directory**: `.` (để trống)
+6. Environment Variables - Add các biến sau:
+   ```
+   MONGO_URI = mongodb+srv://user:pass@cluster.mongodb.net/heneidimsum?retryWrites=true&w=majority
+   NODE_ENV = production
+   JWT_SECRET = your_super_secret_key_here_change_this
+   PORT = 5000
+   ```
+7. Click **Deploy**
+
+Sau vài phút, backend sẽ có URL: `https://henei-dimsum-backend.vercel.app`
+
+**Cách 2: Qua Vercel CLI**
 
 ```bash
 # Install Vercel CLI
 npm install -g vercel
 
-# Navigate to frontend
-cd frontend
+# Di chuyển vào thư mục backend
+cd backend
 
-# Login
+# Login Vercel
 vercel login
 
-# Deploy
-vercel --prod
+# Deploy lần đầu
+vercel
 
-# Nhập thông tin:
-# - Project name: henei-dimsum
-# - Root directory: ./
-# - Build Command: npm run build
-# - Output Directory: build
+# Làm theo hướng dẫn:
+# - Set up and deploy? Y
+# - Which scope? Chọn account của bạn
+# - Link to existing project? N
+# - What's your project's name? henei-dimsum-backend
+# - In which directory is your code located? ./
+
+# Thêm environment variables
+vercel env add MONGO_URI
+# Paste connection string MongoDB Atlas
+
+vercel env add JWT_SECRET
+# Nhập secret key
+
+vercel env add NODE_ENV
+# Nhập: production
+
+# Deploy production
+vercel --prod
 ```
 
-#### Cách 2: Deploy qua GitHub
+#### Test Backend API:
+```bash
+# Test dishes endpoint
+curl https://henei-dimsum-backend.vercel.app/api/dishes
 
-1. Đăng ký [Vercel](https://vercel.com)
-2. New Project > Import Git Repository
-3. Select `henei-dimsum` repository
-4. Cấu hình:
+# Test với Postman hoặc browser
+https://henei-dimsum-backend.vercel.app/api/dishes
+```
+
+---
+
+### 🎨 Bước 2: Deploy Frontend lên Vercel
+
+#### Chuẩn bị:
+- File `frontend/vercel.json` đã được tạo sẵn
+- Copy URL backend từ bước 1
+
+#### Deploy Frontend:
+
+**Cách 1: Qua Vercel Dashboard**
+
+1. Trở về Vercel Dashboard
+2. Click **Add New... > Project**
+3. Chọn lại repository `henei-dimsum`
+4. Cấu hình project:
+   - **Project Name**: `henei-dimsum-frontend` (hoặc `henei-dimsum`)
    - **Framework Preset**: Create React App
-   - **Root Directory**: `frontend`
+   - **Root Directory**: `frontend` ⚠️ QUAN TRỌNG!
    - **Build Command**: `npm run build`
    - **Output Directory**: `build`
 5. Environment Variables:
-   - Key: `REACT_APP_API_URL`
-   - Value: `https://henei-dimsum-backend.onrender.com/api`
-6. Deploy!
+   ```
+   REACT_APP_API_URL = https://henei-dimsum-backend.vercel.app/api
+   ```
+   ⚠️ Thay URL bằng URL backend thực tế từ bước 1
+6. Click **Deploy**
 
-URL production: `https://henei-dimsum.vercel.app`
+URL frontend: `https://henei-dimsum.vercel.app`
+
+**Cách 2: Qua Vercel CLI**
+
+```bash
+# Di chuyển vào thư mục frontend
+cd ../frontend
+
+# Deploy
+vercel
+
+# Làm theo hướng dẫn:
+# - Set up and deploy? Y
+# - Which scope? Chọn account
+# - Link to existing project? N
+# - What's your project's name? henei-dimsum
+# - In which directory is your code located? ./
+
+# Thêm API URL
+vercel env add REACT_APP_API_URL
+# Nhập: https://henei-dimsum-backend.vercel.app/api
+
+# Deploy production
+vercel --prod
+```
+
+---
+
+### 🔄 Cập nhật CORS cho Backend
+
+Sau khi có URL frontend, cần cập nhật CORS trong backend:
+
+1. Vào Vercel Dashboard > Backend project
+2. Settings > Environment Variables
+3. Add variable mới:
+   ```
+   FRONTEND_URL = https://henei-dimsum.vercel.app
+   ```
+4. Redeploy backend (Deployments > ... > Redeploy)
+
+Hoặc cập nhật code `backend/server.js`:
+```javascript
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  credentials: true
+};
+app.use(cors(corsOptions));
+```
+
+---
+
+### 🚀 Tự động Deploy khi Push Code
+
+Vercel tự động deploy khi bạn push code lên GitHub:
+
+- **Production**: Push lên branch `main` → Auto deploy production
+- **Preview**: Push lên branch khác → Auto deploy preview URL
+
+Để tắt auto-deploy:
+1. Project Settings > Git
+2. Tắt "Automatic Deployments from GitHub"
+
+---
+
+### Vercel (Alternative - Monorepo Deploy)
+
+Nếu muốn deploy từ root project (không tách riêng backend/frontend):
 
 ---
 

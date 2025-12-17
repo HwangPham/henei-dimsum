@@ -1,0 +1,173 @@
+.promotions-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.promotions-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.promotions-header h1 {
+  color: #d32f2f;
+  margin-bottom: 0.5rem;
+}
+
+.promotions-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.promotions-loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.no-promotions {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.no-promotions p {
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.promotions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.promotion-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.promotion-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.promotion-badge {
+  background: linear-gradient(135deg, #ff6b6b 0%, #d32f2f 100%);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.discount-value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.discount-label {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  opacity: 0.95;
+}
+
+.promotion-content {
+  padding: 1.5rem;
+}
+
+.promotion-content h3 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.promotion-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.promotion-dates {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.date-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.date-label {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.date-value {
+  font-weight: 600;
+  color: #333;
+}
+
+.promotion-terms {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #eee;
+}
+
+.promotion-terms h4 {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.promotion-terms p {
+  font-size: 0.9rem;
+  color: #888;
+  line-height: 1.5;
+}
+
+.promotion-code {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #fff3e0;
+  border-left: 4px solid #ff9800;
+  border-radius: 4px;
+}
+
+.promotion-code span {
+  color: #666;
+}
+
+.promotion-code strong {
+  color: #d32f2f;
+  font-size: 1.1rem;
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .promotions-container {
+    padding: 0 1rem;
+  }
+
+  .promotions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .promotion-dates {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
