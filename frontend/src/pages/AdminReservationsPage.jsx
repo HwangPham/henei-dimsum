@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { reservationsAPI } from '../services/api';
 import './AdminReservationsPage.css';
 
 function AdminReservationsPage() {
@@ -9,19 +10,13 @@ function AdminReservationsPage() {
   const [filter, setFilter] = useState('all'); // all, pending, confirmed, cancelled
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken');
-    if (!token) {
-      navigate('/admin/login');
-      return;
-    }
     fetchReservations();
-  }, [navigate]);
+  }, []);
 
   const fetchReservations = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/reservations');
-      const data = await response.json();
-      setReservations(data);
+      const data = await reservationsAPI.getAll();
+      setReservations(Array.isArray(data) ? data : []);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching reservations:', error);
@@ -31,21 +26,12 @@ function AdminReservationsPage() {
 
   const updateStatus = async (id, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/reservations/${id}/status`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status: newStatus }),
-      });
-
-      if (response.ok) {
-        alert('Cập nhật trạng thái thành công!');
-        fetchReservations();
-      }
+      await reservationsAPI.updateStatus(id, newStatus);
+      alert('Cập nhật trạng thái thành công!');
+      fetchReservations();
     } catch (error) {
       console.error('Error updating status:', error);
-      alert('Có lỗi xảy ra!');
+      alert('Có lỗi xảy ra: ' + (error.response?.data?.message || error.message));
     }
   };
 
@@ -73,8 +59,8 @@ function AdminReservationsPage() {
     return texts[status] || status;
   };
 
-  const filteredReservations = filter === 'all' 
-    ? reservations 
+  const filteredReservations = filter === 'all'
+    ? reservations
     : reservations.filter(r => r.status === filter);
 
   if (loading) {
@@ -83,41 +69,26 @@ function AdminReservationsPage() {
 
   return (
     <div className="admin-page">
-      <div className="admin-header">
-        <div>
-          <button className="btn-back" onClick={() => navigate('/admin/dashboard')}>
-            ← Quay lại Dashboard
-          </button>
-          <h1>🍽️ Quản Lý Đặt Bàn</h1>
-        </div>
-        <button className="btn-logout" onClick={() => {
-          localStorage.clear();
-          navigate('/admin/login');
-        }}>
-          Đăng Xuất
-        </button>
-      </div>
-
       <div className="filter-tabs">
-        <button 
+        <button
           className={filter === 'all' ? 'active' : ''}
           onClick={() => setFilter('all')}
         >
           Tất cả ({reservations.length})
         </button>
-        <button 
+        <button
           className={filter === 'pending' ? 'active' : ''}
           onClick={() => setFilter('pending')}
         >
           Chờ xác nhận ({reservations.filter(r => r.status === 'pending').length})
         </button>
-        <button 
+        <button
           className={filter === 'confirmed' ? 'active' : ''}
           onClick={() => setFilter('confirmed')}
         >
           Đã xác nhận ({reservations.filter(r => r.status === 'confirmed').length})
         </button>
-        <button 
+        <button
           className={filter === 'completed' ? 'active' : ''}
           onClick={() => setFilter('completed')}
         >
@@ -136,7 +107,7 @@ function AdminReservationsPage() {
                   <h3>{reservation.customer.name}</h3>
                   <p className="reservation-id">ID: {reservation._id.slice(-8)}</p>
                 </div>
-                <div 
+                <div
                   className="status-badge"
                   style={{ background: getStatusColor(reservation.status) }}
                 >
@@ -185,13 +156,13 @@ function AdminReservationsPage() {
               <div className="card-actions">
                 {reservation.status === 'pending' && (
                   <>
-                    <button 
+                    <button
                       className="btn-action btn-confirm"
                       onClick={() => updateStatus(reservation._id, 'confirmed')}
                     >
                       ✓ Xác nhận
                     </button>
-                    <button 
+                    <button
                       className="btn-action btn-cancel"
                       onClick={() => updateStatus(reservation._id, 'cancelled')}
                     >
@@ -200,7 +171,7 @@ function AdminReservationsPage() {
                   </>
                 )}
                 {reservation.status === 'confirmed' && (
-                  <button 
+                  <button
                     className="btn-action btn-complete"
                     onClick={() => updateStatus(reservation._id, 'completed')}
                   >

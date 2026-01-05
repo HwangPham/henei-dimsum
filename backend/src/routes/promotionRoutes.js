@@ -2,9 +2,11 @@
 const express = require('express');
 const router = express.Router();
 const Promotion = require('../models/Promotion');
+const auth = require('../middleware/auth');
 
-// GET /api/promotions - Lấy tất cả khuyến mãi đang hoạt động
+// GET /api/promotions - Lấy tất cả khuyến mãi đang hoạt động (Public)
 router.get('/', async (req, res) => {
+  // ... (giữ nguyên logic cũ)
   try {
     const now = new Date();
     const promotions = await Promotion.find({
@@ -19,7 +21,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /api/promotions/:id - Lấy chi tiết khuyến mãi
+// GET /api/promotions/:id - Lấy chi tiết khuyến mãi (Public)
 router.get('/:id', async (req, res) => {
   try {
     const promotion = await Promotion.findById(req.params.id);
@@ -33,8 +35,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST /api/promotions - Tạo khuyến mãi mới (admin)
-router.post('/', async (req, res) => {
+// POST /api/promotions - Tạo khuyến mãi mới (Admin only)
+router.post('/', auth, async (req, res) => {
   try {
     const promotion = new Promotion(req.body);
     await promotion.save();
@@ -48,8 +50,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT /api/promotions/:id - Cập nhật khuyến mãi (admin)
-router.put('/:id', async (req, res) => {
+// PUT /api/promotions/:id - Cập nhật khuyến mãi (Admin only)
+router.put('/:id', auth, async (req, res) => {
   try {
     const promotion = await Promotion.findByIdAndUpdate(
       req.params.id,
@@ -66,8 +68,8 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/promotions/:id - Xóa khuyến mãi (admin)
-router.delete('/:id', async (req, res) => {
+// DELETE /api/promotions/:id - Xóa khuyến mãi (Admin only)
+router.delete('/:id', auth, async (req, res) => {
   try {
     const promotion = await Promotion.findByIdAndDelete(req.params.id);
     if (!promotion) {

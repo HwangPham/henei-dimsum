@@ -2,9 +2,11 @@
 const express = require('express');
 const router = express.Router();
 const Order = require('../models/Order');
+const auth = require('../middleware/auth');
 
-// POST /api/orders - Tạo đơn hàng mới
+// POST /api/orders - Tạo đơn hàng mới (Public)
 router.post('/', async (req, res) => {
+  // ... (giữ nguyên logic cũ)
   try {
     const { items, customer, totalPrice } = req.body;
 
@@ -20,7 +22,6 @@ router.post('/', async (req, res) => {
       items,
       customer,
       totalPrice
-      // status sẽ mặc định là "pending"
     });
 
     await order.save();
@@ -36,7 +37,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /api/orders/:id - Lấy thông tin đơn hàng
+// GET /api/orders/:id - Lấy thông tin đơn hàng (Public/Admin? - Thường là public cho khách xem bill)
 router.get('/:id', async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
@@ -50,8 +51,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// GET /api/orders - Lấy tất cả đơn hàng (cho admin) + có thể lọc status
-router.get('/', async (req, res) => {
+// GET /api/orders - Lấy tất cả đơn hàng (Admin only)
+router.get('/', auth, async (req, res) => {
   try {
     const { status } = req.query;
     const filter = {};
@@ -68,8 +69,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-// PATCH /api/orders/:id/status - Cập nhật trạng thái đơn hàng
-router.patch('/:id/status', async (req, res) => {
+// PATCH /api/orders/:id/status - Cập nhật trạng thái đơn hàng (Admin only)
+router.patch('/:id/status', auth, async (req, res) => {
   try {
     const { status } = req.body;
 

@@ -1,83 +1,64 @@
 import React, { useState, useEffect } from "react";
 import "./MenuPage.css";
 
-const menuCategories = [
-  {
-    id: "chien",
-    name: "MÓN CHIÊN - FRIED DISHES",
-    images: [
-      "/images/chien/chien-new-1.webp",
-      "/images/chien/chien-new-2.webp"
-    ]
-  },
-  {
-    id: "hap",
-    name: "MÓN HẤP - STEAMED DISHES",
-    images: [
-      "/images/hap/hap-new-1.webp",
-      "/images/hap/hap-new-2.webp"
-    ]
-  },
-  {
-    id: "xao",
-    name: "MÓN XÀO - STIR-FRIED DISHES",
-    images: [
-      "/images/xao/xao-com.webp",
-      "/images/xao/xao-new.webp"
-    ]
-  },
-  {
-    id: "my",
-    name: "MÓN MỲ - NOODLES",
-    images: [
-      "/images/my/my-new.webp"
-    ]
-  },
-  {
-    id: "nuoc",
-    name: "MÓN NƯỚC - DRINKS AND DESSERTS",
-    images: [
-      "/images/nuoc/drink.webp"
-    ]
-  }
+const categories = [
+  { id: "chien", name: "Món Chiên", images: ["/images/chien/chien-new-1.webp", "/images/chien/chien-new-2.webp"] },
+  { id: "hap", name: "Món Hấp", images: ["/images/hap/hap-new-1.webp", "/images/hap/hap-new-2.webp"] },
+  { id: "xao", name: "Món Xào & Cơm", images: ["/images/xao/xao-com.webp", "/images/xao/xao-new.webp"] },
+  { id: "my", name: "Món Mỳ", images: ["/images/my/my-new.webp"] },
+  { id: "nuoc", name: "Đồ Uống", images: ["/images/nuoc/drink.webp"] },
 ];
 
+const CategorySection = ({ cat }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentIndex((prev) => (prev + 1) % cat.images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((prev) => (prev === 0 ? cat.images.length - 1 : prev - 1));
+  };
+
+  return (
+    <div id={cat.id} className="menu-category">
+      <h2>{cat.name}</h2>
+      <div className="menu-image-container">
+        <img src={cat.images[currentIndex]} alt={cat.name} className="menu-image" />
+
+        {cat.images.length > 1 && (
+          <>
+            <button className="nav-btn prev-btn" onClick={prevImage}>❮</button>
+            <button className="nav-btn next-btn" onClick={nextImage}>❯</button>
+            <div className="image-dots">
+              {cat.images.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`dot ${idx === currentIndex ? "active" : ""}`}
+                  onClick={() => setCurrentIndex(idx)}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const MenuPage = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState({});
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
+      setShowScrollTop(window.scrollY > 300);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  const nextImage = (categoryId, totalImages) => {
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [categoryId]: ((prev[categoryId] || 0) + 1) % totalImages
-    }));
-  };
-
-  const prevImage = (categoryId, totalImages) => {
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [categoryId]: ((prev[categoryId] || 0) - 1 + totalImages) % totalImages
-    }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -88,57 +69,17 @@ const MenuPage = () => {
       </div>
 
       <div className="menu-sidebar">
-        {menuCategories.map((category) => (
-          <a key={category.id} href={`#${category.id}`} className="sidebar-link">
-            {category.name.split(' - ')[0]}
+        {categories.map((cat) => (
+          <a key={cat.id} href={`#${cat.id}`} className="sidebar-link">
+            {cat.name}
           </a>
         ))}
       </div>
 
       <div className="menu-content">
-        {menuCategories.map((category) => {
-          const currentIndex = currentImageIndex[category.id] || 0;
-          return (
-            <div key={category.id} id={category.id} className="menu-category">
-              <h2>{category.name}</h2>
-              <div className="menu-image-container">
-                <img 
-                  src={category.images[currentIndex]} 
-                  alt={category.name}
-                  className="menu-image"
-                />
-                {category.images.length > 1 && (
-                  <>
-                    <button 
-                      className="nav-btn prev-btn"
-                      onClick={() => prevImage(category.id, category.images.length)}
-                    >
-                      ‹
-                    </button>
-                    <button 
-                      className="nav-btn next-btn"
-                      onClick={() => nextImage(category.id, category.images.length)}
-                    >
-                      ›
-                    </button>
-                    <div className="image-dots">
-                      {category.images.map((_, index) => (
-                        <span 
-                          key={index}
-                          className={`dot ${index === currentIndex ? 'active' : ''}`}
-                          onClick={() => setCurrentImageIndex(prev => ({
-                            ...prev,
-                            [category.id]: index
-                          }))}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-          );
-        })}
+        {categories.map((cat) => (
+          <CategorySection key={cat.id} cat={cat} />
+        ))}
       </div>
 
       {showScrollTop && (

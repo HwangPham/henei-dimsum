@@ -1,12 +1,10 @@
-// src/controllers/orderController.js
 const Order = require('../models/Order');
-const Menu = require('../models/Menu');
+const Dish = require('../models/Dish');
 
 // GET /api/orders – Lấy tất cả đơn hàng
 exports.getOrders = async (req, res) => {
   try {
-    // populate thông tin món trong đơn hàng nếu cần
-    const orders = await Order.find().populate('items.menuItem');
+    const orders = await Order.find().sort({ createdAt: -1 });
     res.json(orders);
   } catch (error) {
     res.status(500).json({ message: 'Lỗi khi lấy đơn hàng', error });
@@ -16,26 +14,25 @@ exports.getOrders = async (req, res) => {
 // POST /api/orders – Tạo đơn hàng mới
 exports.createOrder = async (req, res) => {
   try {
-    const { items } = req.body; // items là mảng { menuItem: id, quantity }
-    // Tính tổng tiền
-    let totalPrice = 0;
-    // Lấy thông tin tất cả món trong đơn
-    const menuIds = items.map(item => item.menuItem);
-    const menuDocs = await Menu.find({ _id: { $in: menuIds } });
+    const { items, customer, totalPrice } = req.body;
 
-    // Tính tổng dựa trên giá của từng món
-    items.forEach(item => {
-      const menuDoc = menuDocs.find(m => m.id === item.menuItem);
-      if (menuDoc) {
-        totalPrice += menuDoc.price * item.quantity;
-      }
+    // Kiểm tra tính hợp lệ của items
+    if (!items || items.length === 0) {
+      return res.status(400).json({ message: 'Giỏ hàng trống!' });
+    }
+
+    // Tạo đơn hàng mới theo đúng schema trong Order.js
+    const newOrder = new Order({
+      items,
+      customer,
+      totalPrice
     });
 
-    // Tạo đơn hàng mới
-    const newOrder = new Order({ items, totalPrice });
     const savedOrder = await newOrder.save();
     res.status(201).json(savedOrder);
   } catch (error) {
-    res.status(500).json({ message: 'Lỗi khi tạo đơn hàng', error });
+    console.error('Lỗi khi tạo đơn hàng:', error);
+    res.status(500).json({ message: 'Lỗi khi tạo đơn hàng', error: error.message });
   }
 };
+

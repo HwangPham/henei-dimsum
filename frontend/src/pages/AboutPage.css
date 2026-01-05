@@ -93,3 +93,19 @@
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .about-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}

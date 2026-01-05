@@ -96,22 +96,23 @@
 
 @media (max-width: 768px) {
   .home-container {
-    padding: 1rem;
+    padding: 1rem 0.5rem;
   }
 
   .home-intro {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .home-intro h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .home-intro p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
   .home-side-image img {
-    max-height: 300px;
+    max-height: 250px;
   }
 }

@@ -2,8 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const PreOrder = require('../models/PreOrder');
+const auth = require('../middleware/auth');
 
-// POST /api/preorders - Tạo đặt hàng trước mới
+// POST /api/preorders - Tạo đặt hàng trước mới (Public)
 router.post('/', async (req, res) => {
   try {
     const { customer, pickupDate, pickupTime, items, totalPrice, paymentMethod, specialRequests } = req.body;
@@ -43,8 +44,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /api/preorders/:id - Lấy thông tin đặt hàng
-router.get('/:id', async (req, res) => {
+// GET /api/preorders/:id - Lấy thông tin đặt hàng (Admin only - or public with order logic)
+router.get('/:id', auth, async (req, res) => {
   try {
     const preOrder = await PreOrder.findById(req.params.id);
     if (!preOrder) {
@@ -57,8 +58,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// GET /api/preorders - Lấy tất cả đơn đặt hàng (cho admin)
-router.get('/', async (req, res) => {
+// GET /api/preorders - Lấy tất cả đơn đặt hàng (Admin only)
+router.get('/', auth, async (req, res) => {
   try {
     const preOrders = await PreOrder.find().sort({ pickupDate: -1 });
     res.json(preOrders);
@@ -68,8 +69,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-// PUT /api/preorders/:id/status - Cập nhật trạng thái đơn hàng
-router.put('/:id/status', async (req, res) => {
+// PUT /api/preorders/:id/status - Cập nhật trạng thái đơn hàng (Admin only)
+router.put('/:id/status', auth, async (req, res) => {
   try {
     const { status } = req.body;
     const preOrder = await PreOrder.findByIdAndUpdate(

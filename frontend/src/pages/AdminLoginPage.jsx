@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
 import './AdminLoginPage.css';
 
 function AdminLoginPage() {
@@ -26,28 +27,17 @@ function AdminLoginPage() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await api.post('/auth/login', formData);
+      const data = response.data;
 
-      const data = await response.json();
+      // Lưu token vào localStorage
+      localStorage.setItem('adminToken', data.token);
+      localStorage.setItem('adminName', data.admin.username);
 
-      if (response.ok) {
-        // Lưu token vào localStorage
-        localStorage.setItem('adminToken', data.token);
-        localStorage.setItem('adminName', data.admin.name);
-        
-        // Chuyển đến dashboard
-        navigate('/admin/dashboard');
-      } else {
-        setError(data.message || 'Đăng nhập thất bại');
-      }
+      // Chuyển đến dashboard
+      navigate('/admin/dashboard');
     } catch (err) {
-      setError('Không thể kết nối đến server');
+      setError(err.response?.data?.message || 'Không thể kết nối đến server');
       console.error(err);
     } finally {
       setLoading(false);
@@ -104,8 +94,8 @@ function AdminLoginPage() {
             </div>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="btn-login"
             disabled={loading}
           >

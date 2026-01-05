@@ -2,8 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const Reservation = require('../models/Reservation');
+const auth = require('../middleware/auth');
 
-// POST /api/reservations - Tạo đặt bàn mới
+// POST /api/reservations - Tạo đặt bàn mới (Public)
 router.post('/', async (req, res) => {
   try {
     const { customer, reservationDate, reservationTime, numberOfGuests, tablePreference, specialRequests } = req.body;
@@ -38,8 +39,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /api/reservations/:id - Lấy thông tin đặt bàn
-router.get('/:id', async (req, res) => {
+// GET /api/reservations/:id - Lấy thông tin đặt bàn (Admin only)
+router.get('/:id', auth, async (req, res) => {
   try {
     const reservation = await Reservation.findById(req.params.id);
     if (!reservation) {
@@ -52,8 +53,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// GET /api/reservations - Lấy tất cả đặt bàn (cho admin)
-router.get('/', async (req, res) => {
+// GET /api/reservations - Lấy tất cả đặt bàn (Admin only)
+router.get('/', auth, async (req, res) => {
   try {
     const reservations = await Reservation.find().sort({ reservationDate: -1 });
     res.json(reservations);
@@ -63,8 +64,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-// PUT /api/reservations/:id/status - Cập nhật trạng thái đặt bàn
-router.put('/:id/status', async (req, res) => {
+// PUT /api/reservations/:id/status - Cập nhật trạng thái đặt bàn (Admin only)
+router.put('/:id/status', auth, async (req, res) => {
   try {
     const { status } = req.body;
     const reservation = await Reservation.findByIdAndUpdate(

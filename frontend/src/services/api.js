@@ -9,6 +9,20 @@ const api = axios.create({
   },
 });
 
+// Add a request interceptor to inject the auth token
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('adminToken');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 // Dishes API
 export const dishesAPI = {
   // Lấy tất cả món ăn
@@ -70,27 +84,74 @@ export const dishesAPI = {
   },
 };
 
-// Orders API
-export const ordersAPI = {
-  createOrder: async (orderData) => {
-    try {
-      const response = await api.post('/orders', orderData);
-      return response.data;
-    } catch (error) {
-      console.error('Error creating order:', error);
-      throw error;
-    }
+// Orders API (Pre-orders from customers)
+export const preordersAPI = {
+  getAll: async () => {
+    const response = await api.get('/preorders');
+    return response.data;
   },
+  updateStatus: async (id, status) => {
+    const response = await api.put(`/preorders/${id}/status`, { status });
+    return response.data;
+  },
+  create: async (data) => {
+    const response = await api.post('/preorders', data);
+    return response.data;
+  }
+};
 
-  getOrderById: async (id) => {
-    try {
-      const response = await api.get(`/orders/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching order:', error);
-      throw error;
-    }
+// Reservations API
+export const reservationsAPI = {
+  getAll: async () => {
+    const response = await api.get('/reservations');
+    return response.data;
   },
+  updateStatus: async (id, status) => {
+    const response = await api.put(`/reservations/${id}/status`, { status });
+    return response.data;
+  },
+  create: async (data) => {
+    const response = await api.post('/reservations', data);
+    return response.data;
+  }
+};
+
+// Promotions API
+export const promotionsAPI = {
+  getAll: async () => {
+    const response = await api.get('/promotions');
+    return response.data;
+  },
+  create: async (data) => {
+    const response = await api.post('/promotions', data);
+    return response.data;
+  },
+  update: async (id, data) => {
+    const response = await api.put(`/promotions/${id}`, data);
+    return response.data;
+  },
+  delete: async (id) => {
+    const response = await api.delete(`/promotions/${id}`);
+    return response.data;
+  }
+};
+
+// Stats API
+export const statsAPI = {
+  getDashboardStats: async () => {
+    const [reservations, preorders, promotions, dishes] = await Promise.all([
+      api.get('/reservations'),
+      api.get('/preorders'),
+      api.get('/promotions'),
+      api.get('/dishes')
+    ]);
+    return {
+      reservations: Array.isArray(reservations.data) ? reservations.data.length : 0,
+      preorders: Array.isArray(preorders.data) ? preorders.data.length : 0,
+      promotions: Array.isArray(promotions.data) ? promotions.data.length : 0,
+      dishes: Array.isArray(dishes.data) ? dishes.data.length : 0
+    };
+  }
 };
 
 export default api;

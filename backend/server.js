@@ -2,6 +2,7 @@
 const express = require('express');
 const connectDB = require('./src/config/db');
 const dishRoutes = require("./src/routes/dishRoutes");
+const orderRoutes = require("./src/routes/orderRoutes");
 const reservationRoutes = require('./src/routes/reservationRoutes');
 const preOrderRoutes = require('./src/routes/preOrderRoutes');
 const promotionRoutes = require('./src/routes/promotionRoutes');
@@ -25,7 +26,7 @@ app.use(express.json()); // Xử lý body JSON
 
 // Health check endpoint
 app.get('/', (req, res) => {
-  res.json({ 
+  res.json({
     message: 'Henei Dimsum API is running',
     status: 'OK',
     timestamp: new Date().toISOString()
@@ -34,6 +35,7 @@ app.get('/', (req, res) => {
 
 // Định nghĩa routes
 app.use("/api/dishes", dishRoutes);
+app.use("/api/orders", orderRoutes);
 app.use('/api/reservations', reservationRoutes);
 app.use('/api/preorders', preOrderRoutes);
 app.use('/api/promotions', promotionRoutes);
@@ -47,7 +49,7 @@ app.use((req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ 
+  res.status(500).json({
     message: 'Something went wrong!',
     error: process.env.NODE_ENV === 'development' ? err.message : {}
   });

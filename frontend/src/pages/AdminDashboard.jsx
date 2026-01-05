@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { statsAPI } from '../services/api';
 import './AdminDashboard.css';
 
 function AdminDashboard() {
@@ -13,34 +14,15 @@ function AdminDashboard() {
   });
 
   useEffect(() => {
-    // Kiểm tra đăng nhập
-    const token = localStorage.getItem('adminToken');
     const name = localStorage.getItem('adminName');
-    
-    if (!token) {
-      navigate('/admin/login');
-      return;
-    }
-
     setAdminName(name || 'Admin');
     fetchStats();
-  }, [navigate]);
+  }, []);
 
   const fetchStats = async () => {
     try {
-      const [reservations, preorders, promotions, dishes] = await Promise.all([
-        fetch('http://localhost:5000/api/reservations').then(r => r.json()),
-        fetch('http://localhost:5000/api/preorders').then(r => r.json()),
-        fetch('http://localhost:5000/api/promotions').then(r => r.json()),
-        fetch('http://localhost:5000/api/dishes').then(r => r.json())
-      ]);
-
-      setStats({
-        reservations: reservations.length,
-        preorders: preorders.length,
-        promotions: promotions.length,
-        dishes: dishes.length
-      });
+      const dashboardStats = await statsAPI.getDashboardStats();
+      setStats(dashboardStats);
     } catch (error) {
       console.error('Error fetching stats:', error);
     }
@@ -85,16 +67,6 @@ function AdminDashboard() {
 
   return (
     <div className="admin-dashboard">
-      <div className="dashboard-header">
-        <div className="header-left">
-          <h1>🏠 Trang Quản Trị</h1>
-          <p>Xin chào, <strong>{adminName}</strong></p>
-        </div>
-        <button className="btn-logout" onClick={handleLogout}>
-          Đăng Xuất
-        </button>
-      </div>
-
       <div className="dashboard-grid">
         {menuItems.map((item, index) => (
           <div

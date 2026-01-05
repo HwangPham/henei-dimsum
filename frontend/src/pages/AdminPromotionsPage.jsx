@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { promotionsAPI } from '../services/api';
 import './AdminPromotionsPage.css';
 
 function AdminPromotionsPage() {
@@ -24,9 +25,8 @@ function AdminPromotionsPage() {
 
   const fetchPromotions = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/promotions');
-      const data = await response.json();
-      setPromotions(data);
+      const data = await promotionsAPI.getAll();
+      setPromotions(Array.isArray(data) ? data : []);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching promotions:', error);
@@ -45,28 +45,18 @@ function AdminPromotionsPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = editingId 
-        ? `http://localhost:5000/api/promotions/${editingId}`
-        : 'http://localhost:5000/api/promotions';
-      
-      const method = editingId ? 'PUT' : 'POST';
-
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        alert(editingId ? 'Cập nhật thành công!' : 'Thêm mới thành công!');
-        resetForm();
-        fetchPromotions();
+      if (editingId) {
+        await promotionsAPI.update(editingId, formData);
+        alert('Cập nhật thành công!');
+      } else {
+        await promotionsAPI.create(formData);
+        alert('Thêm mới thành công!');
       }
+      resetForm();
+      fetchPromotions();
     } catch (error) {
       console.error('Error saving promotion:', error);
-      alert('Có lỗi xảy ra!');
+      alert('Có lỗi xảy ra: ' + (error.response?.data?.message || error.message));
     }
   };
 
@@ -90,17 +80,12 @@ function AdminPromotionsPage() {
     if (!window.confirm('Bạn có chắc muốn xóa ưu đãi này?')) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/promotions/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        alert('Xóa thành công!');
-        fetchPromotions();
-      }
+      await promotionsAPI.delete(id);
+      alert('Xóa thành công!');
+      fetchPromotions();
     } catch (error) {
       console.error('Error deleting promotion:', error);
-      alert('Có lỗi xảy ra!');
+      alert('Có lỗi xảy ra: ' + (error.response?.data?.message || error.message));
     }
   };
 
@@ -126,9 +111,8 @@ function AdminPromotionsPage() {
 
   return (
     <div className="admin-promotions-container">
-      <div className="admin-header">
-        <h1>Quản Lý Ưu Đãi & Khuyến Mãi</h1>
-        <button 
+      <div className="admin-actions-top" style={{ marginBottom: '1rem' }}>
+        <button
           className="btn-add-new"
           onClick={() => setShowForm(!showForm)}
         >
@@ -278,28 +262,28 @@ function AdminPromotionsPage() {
                     {promo.isActive ? 'Đang hiển thị' : 'Đã ẩn'}
                   </span>
                 </div>
-                
+
                 <p className="promo-description">{promo.description}</p>
-                
+
                 <div className="promo-details">
                   <div className="detail-item">
-                    <strong>Giảm:</strong> 
-                    {promo.discountType === 'percentage' 
+                    <strong>Giảm:</strong>
+                    {promo.discountType === 'percentage'
                       ? ` ${promo.discountValue}%`
                       : promo.discountType === 'fixed'
-                      ? ` ${promo.discountValue.toLocaleString()}đ`
-                      : ' Combo đặc biệt'}
+                        ? ` ${(promo.discountValue || 0).toLocaleString()}đ`
+                        : ' Combo đặc biệt'}
                   </div>
-                  
+
                   {promo.code && (
                     <div className="detail-item">
                       <strong>Mã:</strong> {promo.code}
                     </div>
                   )}
-                  
+
                   <div className="detail-item">
-                    <strong>Thời gian:</strong> {new Date(promo.validFrom).toLocaleDateString('vi-VN')} 
-                    {' → '} 
+                    <strong>Thời gian:</strong> {new Date(promo.validFrom).toLocaleDateString('vi-VN')}
+                    {' → '}
                     {new Date(promo.validTo).toLocaleDateString('vi-VN')}
                   </div>
                 </div>

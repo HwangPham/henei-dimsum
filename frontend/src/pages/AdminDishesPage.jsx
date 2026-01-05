@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { dishesAPI } from '../services/api';
 import './AdminDishesPage.css';
 
 function AdminDishesPage() {
@@ -30,8 +31,7 @@ function AdminDishesPage() {
 
   const fetchDishes = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/dishes');
-      const data = await response.json();
+      const data = await dishesAPI.getAllDishes();
       setDishes(data);
       setLoading(false);
     } catch (error) {
@@ -51,28 +51,21 @@ function AdminDishesPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = editingId 
-        ? `http://localhost:5000/api/dishes/${editingId}`
-        : 'http://localhost:5000/api/dishes';
-      
-      const method = editingId ? 'PUT' : 'POST';
+      const dishData = {
+        ...formData,
+        price: parseFloat(formData.price)
+      };
 
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          price: parseFloat(formData.price)
-        }),
-      });
-
-      if (response.ok) {
-        alert(editingId ? 'Cập nhật món ăn thành công!' : 'Thêm món ăn mới thành công!');
-        resetForm();
-        fetchDishes();
+      if (editingId) {
+        await dishesAPI.updateDish(editingId, dishData);
+        alert('Cập nhật món ăn thành công!');
+      } else {
+        await dishesAPI.createDish(dishData);
+        alert('Thêm món ăn mới thành công!');
       }
+
+      resetForm();
+      fetchDishes();
     } catch (error) {
       console.error('Error saving dish:', error);
       alert('Có lỗi xảy ra!');
@@ -95,14 +88,9 @@ function AdminDishesPage() {
     if (!window.confirm('Bạn có chắc muốn xóa món ăn này?')) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/dishes/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        alert('Xóa món ăn thành công!');
-        fetchDishes();
-      }
+      await dishesAPI.deleteDish(id);
+      alert('Xóa món ăn thành công!');
+      fetchDishes();
     } catch (error) {
       console.error('Error deleting dish:', error);
       alert('Có lỗi xảy ra!');
@@ -121,8 +109,8 @@ function AdminDishesPage() {
     setShowForm(false);
   };
 
-  const filteredDishes = filter === 'all' 
-    ? dishes 
+  const filteredDishes = filter === 'all'
+    ? dishes
     : dishes.filter(d => d.category === filter);
 
   if (loading) {
@@ -131,27 +119,13 @@ function AdminDishesPage() {
 
   return (
     <div className="admin-page">
-      <div className="admin-header">
-        <div>
-          <button className="btn-back" onClick={() => navigate('/admin/dashboard')}>
-            ← Quay lại Dashboard
-          </button>
-          <h1>🍜 Quản Lý Thực Đơn</h1>
-        </div>
-        <div className="header-actions">
-          <button 
-            className="btn-add-new"
-            onClick={() => setShowForm(!showForm)}
-          >
-            {showForm ? 'Đóng Form' : '+ Thêm Món Mới'}
-          </button>
-          <button className="btn-logout" onClick={() => {
-            localStorage.clear();
-            navigate('/admin/login');
-          }}>
-            Đăng Xuất
-          </button>
-        </div>
+      <div className="admin-actions-top" style={{ marginBottom: '1rem' }}>
+        <button
+          className="btn-add-new"
+          onClick={() => setShowForm(!showForm)}
+        >
+          {showForm ? 'Đóng Form' : '+ Thêm Món Mới'}
+        </button>
       </div>
 
       {showForm && (
@@ -233,14 +207,14 @@ function AdminDishesPage() {
       )}
 
       <div className="filter-tabs">
-        <button 
+        <button
           className={filter === 'all' ? 'active' : ''}
           onClick={() => setFilter('all')}
         >
           Tất cả ({dishes.length})
         </button>
         {categories.map(cat => (
-          <button 
+          <button
             key={cat}
             className={filter === cat ? 'active' : ''}
             onClick={() => setFilter(cat)}
@@ -267,7 +241,7 @@ function AdminDishesPage() {
                 {dish.description && (
                   <p className="dish-description">{dish.description}</p>
                 )}
-                <p className="dish-price">{dish.price.toLocaleString()}đ</p>
+                <p className="dish-price">{(dish.price || 0).toLocaleString()}đ</p>
               </div>
               <div className="dish-actions">
                 <button className="btn-edit" onClick={() => handleEdit(dish)}>

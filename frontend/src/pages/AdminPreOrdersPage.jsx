@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { preordersAPI } from '../services/api';
 import './AdminPreOrdersPage.css';
 
 function AdminPreOrdersPage() {
@@ -9,19 +10,13 @@ function AdminPreOrdersPage() {
   const [filter, setFilter] = useState('all');
 
   useEffect(() => {
-    const token = localStorage.getItem('adminToken');
-    if (!token) {
-      navigate('/admin/login');
-      return;
-    }
     fetchPreOrders();
-  }, [navigate]);
+  }, []);
 
   const fetchPreOrders = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/preorders');
-      const data = await response.json();
-      setPreorders(data);
+      const data = await preordersAPI.getAll();
+      setPreorders(Array.isArray(data) ? data : []);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching preorders:', error);
@@ -31,21 +26,12 @@ function AdminPreOrdersPage() {
 
   const updateStatus = async (id, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/preorders/${id}/status`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status: newStatus }),
-      });
-
-      if (response.ok) {
-        alert('Cập nhật trạng thái thành công!');
-        fetchPreOrders();
-      }
+      await preordersAPI.updateStatus(id, newStatus);
+      alert('Cập nhật trạng thái thành công!');
+      fetchPreOrders();
     } catch (error) {
       console.error('Error updating status:', error);
-      alert('Có lỗi xảy ra!');
+      alert('Có lỗi xảy ra: ' + (error.response?.data?.message || error.message));
     }
   };
 
@@ -77,8 +63,8 @@ function AdminPreOrdersPage() {
     return texts[status] || status;
   };
 
-  const filteredPreOrders = filter === 'all' 
-    ? preorders 
+  const filteredPreOrders = filter === 'all'
+    ? preorders
     : preorders.filter(p => p.status === filter);
 
   if (loading) {
@@ -87,41 +73,26 @@ function AdminPreOrdersPage() {
 
   return (
     <div className="admin-page">
-      <div className="admin-header">
-        <div>
-          <button className="btn-back" onClick={() => navigate('/admin/dashboard')}>
-            ← Quay lại Dashboard
-          </button>
-          <h1>📦 Quản Lý Đặt Hàng</h1>
-        </div>
-        <button className="btn-logout" onClick={() => {
-          localStorage.clear();
-          navigate('/admin/login');
-        }}>
-          Đăng Xuất
-        </button>
-      </div>
-
       <div className="filter-tabs">
-        <button 
+        <button
           className={filter === 'all' ? 'active' : ''}
           onClick={() => setFilter('all')}
         >
           Tất cả ({preorders.length})
         </button>
-        <button 
+        <button
           className={filter === 'pending' ? 'active' : ''}
           onClick={() => setFilter('pending')}
         >
           Chờ xác nhận ({preorders.filter(p => p.status === 'pending').length})
         </button>
-        <button 
+        <button
           className={filter === 'preparing' ? 'active' : ''}
           onClick={() => setFilter('preparing')}
         >
           Đang làm ({preorders.filter(p => p.status === 'preparing').length})
         </button>
-        <button 
+        <button
           className={filter === 'ready' ? 'active' : ''}
           onClick={() => setFilter('ready')}
         >
@@ -140,7 +111,7 @@ function AdminPreOrdersPage() {
                   <h3>{order.customer.name}</h3>
                   <p className="order-id">ID: {order._id.slice(-8)}</p>
                 </div>
-                <div 
+                <div
                   className="status-badge"
                   style={{ background: getStatusColor(order.status) }}
                 >
@@ -166,12 +137,12 @@ function AdminPreOrdersPage() {
                   </div>
                   <div className="info-item">
                     <span className="label">💳 Thanh toán:</span>
-                    <span>{order.paymentMethod === 'cash' ? 'Tiền mặt' : 
-                           order.paymentMethod === 'card' ? 'Thẻ' : 'Chuyển khoản'}</span>
+                    <span>{order.paymentMethod === 'cash' ? 'Tiền mặt' :
+                      order.paymentMethod === 'card' ? 'Thẻ' : 'Chuyển khoản'}</span>
                   </div>
                   <div className="info-item">
                     <span className="label">💰 Tổng tiền:</span>
-                    <span className="total-price">{order.totalAmount.toLocaleString()}đ</span>
+                    <span className="total-price">{(order.totalAmount || 0).toLocaleString()}đ</span>
                   </div>
                 </div>
 
@@ -181,7 +152,7 @@ function AdminPreOrdersPage() {
                     <div key={index} className="order-item">
                       <span>{item.name}</span>
                       <span>x{item.quantity}</span>
-                      <span>{item.price.toLocaleString()}đ</span>
+                      <span>{(item.price || 0).toLocaleString()}đ</span>
                     </div>
                   ))}
                 </div>
@@ -190,13 +161,13 @@ function AdminPreOrdersPage() {
               <div className="card-actions">
                 {order.status === 'pending' && (
                   <>
-                    <button 
+                    <button
                       className="btn-action btn-confirm"
                       onClick={() => updateStatus(order._id, 'confirmed')}
                     >
                       ✓ Xác nhận
                     </button>
-                    <button 
+                    <button
                       className="btn-action btn-cancel"
                       onClick={() => updateStatus(order._id, 'cancelled')}
                     >
@@ -205,7 +176,7 @@ function AdminPreOrdersPage() {
                   </>
                 )}
                 {order.status === 'confirmed' && (
-                  <button 
+                  <button
                     className="btn-action btn-preparing"
                     onClick={() => updateStatus(order._id, 'preparing')}
                   >
@@ -213,7 +184,7 @@ function AdminPreOrdersPage() {
                   </button>
                 )}
                 {order.status === 'preparing' && (
-                  <button 
+                  <button
                     className="btn-action btn-ready"
                     onClick={() => updateStatus(order._id, 'ready')}
                   >
@@ -221,7 +192,7 @@ function AdminPreOrdersPage() {
                   </button>
                 )}
                 {order.status === 'ready' && (
-                  <button 
+                  <button
                     className="btn-action btn-complete"
                     onClick={() => updateStatus(order._id, 'completed')}
                   >

@@ -15,6 +15,7 @@ import AdminDishesPage from "./pages/AdminDishesPage";
 import AdminPromotionsPage from "./pages/AdminPromotionsPage";
 
 import Navbar from "./components/Navbar";
+import AdminLayout from "./components/AdminLayout";
 
 function App() {
   return (
@@ -28,13 +29,16 @@ function App() {
         <Route path="/promotions" element={<><Navbar /><PromotionsPage /></>} />
         <Route path="/about" element={<><Navbar /><AboutPage /></>} />
 
-        {/* Admin routes không có Navbar */}
+        {/* Admin routes */}
         <Route path="/admin/login" element={<AdminLoginPage />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/reservations" element={<AdminReservationsPage />} />
-        <Route path="/admin/preorders" element={<AdminPreOrdersPage />} />
-        <Route path="/admin/dishes" element={<AdminDishesPage />} />
-        <Route path="/admin/promotions" element={<AdminPromotionsPage />} />
+
+        <Route element={<AdminLayout />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/reservations" element={<AdminReservationsPage />} />
+          <Route path="/admin/preorders" element={<AdminPreOrdersPage />} />
+          <Route path="/admin/dishes" element={<AdminDishesPage />} />
+          <Route path="/admin/promotions" element={<AdminPromotionsPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
